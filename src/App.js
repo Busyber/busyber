@@ -10,7 +10,7 @@ import { ApolloProvider } from '@apollo/client';
 export default function App() {
 
   const clientRef = useRef(getApolloClient({
-    port: 4000, productionServerUrl: ""
+    port: 4000, productionServerUrl: "https://busyber.herokuapp.com/graphql"
   }))
 
 
