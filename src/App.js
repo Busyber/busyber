@@ -1,25 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Suspense, useRef, useState } from 'react'
+import Loading from './libs/components/loading'
+import { Route, Switch } from 'react-router'
+import { BrowserRouter } from 'react-router-dom';
+import LandingScreen from 'components/LandingScreen.js'
+import getApolloClient from 'libs/auth-react/getApolloClient'
+import { ApolloProvider } from '@apollo/client';
 
-function App() {
+
+export default function App() {
+
+  const clientRef = useRef(getApolloClient({
+    port: 4000, productionServerUrl: ""
+  }))
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <ApolloProvider client={clientRef.current} >
+      <LandingScreen />
+    </ApolloProvider>
+  )
 }
 
-export default App;
