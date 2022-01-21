@@ -94,7 +94,7 @@ required={true}
 inputTailWind={' h-10'}
 
 />
-    <div   className={"flex w-full align-start justify-start flex-col                  "}>
+    <div   className={"flex w-full align-start justify-start flex-col          pb-2        "}>
             <Text 
     className={" "}
     type={"text"}
@@ -124,7 +124,7 @@ inputTailWind={' h-10'}
  isShown={addBetaUserData && addBetaUserData.addBetaUser.exists} 
 /> 
     <Button 
-    className={"  w-full         mt-8  "}
+    className={"  w-full         mt-6  "}
     typeSubmit
 variant={"primary"}
 size={"default"}
@@ -154,7 +154,7 @@ loading={addBetaUserLoading}
 ]} 
  />  
     <div  id={'features'}
- className={"flex w-full align-start justify-start flex-col                  "}>
+ className={"flex w-full align-start justify-start flex-col           pt-16       "}>
         <Features 
 heading={`Get more done on the go`} 
 subHeading={`Book, manage tasks, message, and send photos to your Tasker faster than you can say "I'll do it later."`}
@@ -187,7 +187,7 @@ subHeading={`Book, manage tasks, message, and send photos to your Tasker faster 
 
     </div>
     <div  id={'faqs'}
- className={"flex w-full align-start justify-start flex-col                  "}>
+ className={"flex w-full align-start justify-start flex-col           pt-16     mt-0  "}>
         <FrequentlyAsked 
  items={[{ 
  title: 'Can I book a Tasker for same day errands?', 
