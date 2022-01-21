@@ -59,3 +59,19 @@ export const REGISTER = gql`
    }
 
 `
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -58,3 +58,4 @@ const useChangePassword = ({ queryIsPasswordResetValid, queryChangeTokenPassword
 }
 
 export default useChangePassword
+

@@ -1,23 +1,42 @@
-import React, { Suspense, useRef, useState } from 'react'
+import React, { Suspense, useState } from 'react'
 import Loading from './libs/components/loading'
 import { Route, Switch } from 'react-router'
 import { BrowserRouter } from 'react-router-dom';
-import LandingScreen from 'components/LandingScreen.js'
-import getApolloClient from 'libs/auth-react/getApolloClient'
-import { ApolloProvider } from '@apollo/client';
+
+import logopng from 'images/logo.png';
+import Auth from 'libs/components/auth';
+
+
+const AuthProvider = React.lazy(() => import('libs/auth-react/components/auth-provider'))
+const DashboardScreen = React.lazy(() => import('components/DashboardScreen.js'))
+const LandingScreen = React.lazy(() => import('components/LandingScreen.js'))
 
 
 export default function App() {
 
-  const clientRef = useRef(getApolloClient({
-    port: 4000, productionServerUrl: "https://busyber.herokuapp.com/graphql"
-  }))
-
 
   return (
-    <ApolloProvider client={clientRef.current} >
-      <LandingScreen />
-    </ApolloProvider>
+    <BrowserRouter>
+      <Switch>
+        <Route path='/'><Auth 
+ authProvider={<AuthProvider 
+  port={4000} 
+ productionServerUrl={'https://busyber.herokuapp.com/graphql'} 
+ />} 
+ landingComponent={<LandingScreen />} 
+ dashboardComponent={<DashboardScreen />} 
+logo={<img 
+ src={logopng} 
+ alt={'logo'} 
+ className={'w-16 h-16  '} 
+/>
+} 
+/> 
+ </Route> 
+
+
+      </Switch>
+    </BrowserRouter>
   )
 }
 
