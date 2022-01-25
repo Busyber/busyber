@@ -27,7 +27,16 @@ import useSearchParam from '../libs/hooks/useSearchParam.js';
 function LandingScreen(props) {
 
     const history = useHistory()
-    
+    const [addBetaUserMutate, { data: addBetaUserData, error: addBetaUserError, loading: addBetaUserLoading }] = useMutation(gql`mutation($betaUser : betaUserInput){
+ addBetaUser(betaUser: $betaUser)
+ { 
+ exists
+success
+}}`,{
+
+}
+ );
+
 
     const [name,setName] = useState("")
 const [type,setType] = useState("")
@@ -36,41 +45,40 @@ const [email,setEmail] = useState()
 
 
 const executeAddBetaUserMutate = () => {
-addBetaUserMutate({
- variables : {
+addBetaUserMutate({ variables : {
 betaUser: {
-name : name,
+name : email,
 
-email : email,
+name : type,
 
-phone : phone,
+email : name,
+
+email : phone,
+
+phone : email,
+
+phone : type,
+
+type : email,
 
 type : type,
 
 }
+}})
 }
-})
-}
-const [addBetaUserMutate, { data: addBetaUserData, error: addBetaUserError, loading: addBetaUserLoading }] = useMutation(gql`mutation($betaUser : betaUserInput){
- addBetaUser(betaUser: $betaUser)
- { 
- exists
-success
-}}`
- );
 
 
     return (
         <div className={" h-screen "}>
-                <div   className={"flex w-full align-start justify-start flex-col                  "}>
+                <div   className={"flex w-full flex-col "}>
         <LandingHeader 
  sideContent={    <div  id={'form'}
- className={"flex w-full align-start justify-start flex-col            p-16      "}>
+ className={"flex w-full flex-col p-16 "}>
             <Form  
     onSubmit={ () => executeAddBetaUserMutate()}
  >
         <FieldInput
-    className={" w-full   mb-4  m-0 "}
+    className={" w-full mb-4 m-0 "}
     placeholder={"Full Name"}
 onChange={(text)=> setName(text)}
 required={true}
@@ -78,7 +86,7 @@ inputTailWind={' h-10'}
 
 />
 <FieldInput
-    className={" w-full   mb-4   "}
+    className={" w-full mb-4 "}
     type={"email"}
 placeholder={"E-mail Address"}
 onChange={(text)=> setEmail(text)}
@@ -87,16 +95,16 @@ inputTailWind={' h-10'}
 
 />
 <FieldInput
-    className={" w-full   mb-4   "}
+    className={" w-full mb-4 "}
     placeholder={"Phone Number"}
 onChange={(text)=> setPhone(text)}
 required={true}
 inputTailWind={' h-10'}
 
 />
-    <div   className={"flex w-full align-start justify-start flex-col          pb-2        "}>
+    <div   className={"flex w-full pb-2 "}>
             <Text 
-    className={" "}
+    className={""}
     type={"text"}
 
         >
@@ -104,7 +112,7 @@ inputTailWind={' h-10'}
     </Text>
 
     </div>
-    <div   className={"flex w-full align-start justify-start flex-col          pb-4        "}>
+    <div   className={"flex w-full pb-4 "}>
         <select 
  className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" 
  onChange={e => setType(e.target.value)}
@@ -124,7 +132,7 @@ inputTailWind={' h-10'}
  isShown={addBetaUserData && addBetaUserData.addBetaUser.exists} 
 /> 
     <Button 
-    className={"  w-full         mt-6  "}
+    className={"w-full mt-6 "}
     typeSubmit
 variant={"primary"}
 size={"default"}
@@ -151,10 +159,13 @@ loading={addBetaUserLoading}
 { 
  name: 'FAQs', 
  href: `#faqs`},
+{ 
+ name: 'Contact', 
+ href: `mailTo:app.busyber.com`},
 ]} 
  />  
     <div  id={'features'}
- className={"flex w-full align-start justify-start flex-col           pt-16       "}>
+ className={"flex w-full flex-col pt-16 "}>
         <Features 
 heading={`Get more done on the go`} 
 subHeading={`Book, manage tasks, message, and send photos to your Tasker faster than you can say "I'll do it later."`}
@@ -187,7 +198,7 @@ subHeading={`Book, manage tasks, message, and send photos to your Tasker faster 
 
     </div>
     <div  id={'faqs'}
- className={"flex w-full align-start justify-start flex-col           pt-16     mt-0  "}>
+ className={"flex w-full flex-col pt-16 mt-0 "}>
         <FrequentlyAsked 
  items={[{ 
  title: 'Can I book a Tasker for same day errands?', 
@@ -216,6 +227,7 @@ subHeading={`Book, manage tasks, message, and send photos to your Tasker faster 
     company: [
        { name: 'Download Ios App',  href: `#`},
 { name: 'Download Android App',  href: `#`},
+{ name: 'Contact',  href: `mailTo:app.busyber.com`},
 
     ],
     legal: [
