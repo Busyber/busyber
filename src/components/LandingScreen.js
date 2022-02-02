@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useHistory } from 'react-router'
+import LandingHeader from '../libs/components/landing-header';
+import logopng from '../images/logo.png';
 import FieldInput from '../libs/components/fieldinput';
 import Text from '../libs/components/text';
 import ErrorAlert from '../libs/components/alert/error';
@@ -7,8 +9,6 @@ import SuccessAlert from '../libs/components/alert/success';
 import Alert from '../libs/components/alert';
 import Button from '../libs/components/button';
 import Form from '../libs/components/form';
-import LandingHeader from '../libs/components/landing-header';
-import logopng from '../images/logo.png';
 import { DeviceMobileIcon } from '@heroicons/react/solid';
 import { UserIcon } from '@heroicons/react/solid';
 import { ThumbUpIcon } from '@heroicons/react/solid';
@@ -19,7 +19,6 @@ import Features from '../libs/components/features';
 import FrequentlyAsked from '../libs/components/frequently-asked';
 import Footer from '../libs/components/footer';
 import { useMutation, useQuery, gql } from '@apollo/client';
-import useSearchParam from '../libs/hooks/useSearchParam.js';
 
 
 
@@ -139,7 +138,7 @@ size={"default"}
 loading={addBetaUserLoading}
 
     >
-        Register as a beta tester
+        Be the first to know when we launch
     </Button>
 
     </Form>
@@ -168,7 +167,8 @@ loading={addBetaUserLoading}
  className={"flex w-full flex-col pt-16 "}>
         <Features 
 heading={`Get more done on the go`} 
-subHeading={`Book, manage tasks, message, and send photos to your Tasker faster than you can say "I'll do it later."`}
+subHeading={`Discover local on demand services, from grocery shopping, parcel delivery to Babysitting, tutoring and
+so much more.`}
  features={[{ 
  name: 'Try the App', 
  description: `Experience the best busyber has to offer,all in one app (coming soon)`, 
@@ -201,20 +201,25 @@ subHeading={`Book, manage tasks, message, and send photos to your Tasker faster 
  className={"flex w-full flex-col pt-16 mt-0 "}>
         <FrequentlyAsked 
  items={[{ 
- title: 'Can I book a Tasker for same day errands?', 
- content: `Yes!, Taskers are available to help out with errands big or small today.`},
+ title: 'When will the app launch?', 
+ content: `We will be launching soon.`},
 { 
- title: 'Can I book a Tasker to run errands for someone else?', 
- content: `Sure! You can definitely ask a Tasker to help with a loved one's to-do list. Just provide all the details necessary in your booking and we'll help out whoever you'd like.`},
+ title: 'Does signing up as a tasker mean that I automatically become a tasker?', 
+ content: `No, you will be required to go through our on boarding process before you can become a tasker.`},
 { 
- title: 'Are there errands that Taskers can’t do?', 
- content: `Of course, Taskers will not run errands that are illegal or prohibited by local regulations. In addition, Taskers are allowed to decline tasks that they may not feel comfortable with or capable of at their discretion.`},
+ title: 'What is Beta testing?', 
+ content: `This is where we make the app available to a small group of people for quality before it is released to
+our wider audience.`},
+{ 
+ title: 'What does signing up as a beta tester mean?', 
+ content: `Signing up as a beta tester means that you will be among the first taskers and taskomers to use our first
+version of the Busyber app and help us make it better`},
 ]} 
  />  
 
     </div>
 <Footer 
- tagline={'on-demand service application'} 
+ tagline={'Follow us! We’re nice:'} 
  logo={logopng} 
  copyright={'2022 Busyber, All Rights Reserved'} 
  navigation={{
