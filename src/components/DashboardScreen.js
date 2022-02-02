@@ -14,6 +14,7 @@ import Text from '../libs/components/text';
 import ContentController from '../libs/components/content-controller';
 import Dialog from '../libs/components/dialog';
 import { useMutation, useQuery, gql } from '@apollo/client';
+import CSVConverter from 'libs/components/csv-converter';
 
 
 
@@ -268,6 +269,29 @@ both
                                 </div>
 
                             </div>
+
+                            <CSVConverter
+                                tailwind="mt-8"
+                                data={betaUsersData.betaUsers}
+                                headers={[{
+                                    label: "Name",
+                                    key: "name"
+                                }, {
+                                    label: "Email",
+                                    key: "email"
+                                }, {
+                                    label: "Phone",
+                                    key: "phone"
+                                }, {
+                                    label: "Type",
+                                    key: "type"
+                                }, {
+                                    label: "Date",
+                                    key: "date"
+                                }]}
+                                filename='users.csv'
+                            >Export To CSV</CSVConverter>
+
                             <div className={"flex w-full md:justify-evenly md:flex-row flex-col pb-16 pt-16 "}>
                                 <div className={"flex w-full justify-evenly flex-row "}>
                                     <Stat
