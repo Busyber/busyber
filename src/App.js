@@ -21,7 +21,7 @@ export default function App() {
         <Route path='/'><Auth 
  authProvider={<AuthProvider 
   port={4000} 
- productionServerUrl={'https://busyber.herokuapp.com/graphql'} 
+ productionServerUrl={'https://busyber-app.herokuapp.com/graphql'} 
  />} 
  landingComponent={<LandingScreen />} 
  dashboardComponent={<DashboardScreen />} 
